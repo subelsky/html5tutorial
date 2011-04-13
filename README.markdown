@@ -2,8 +2,6 @@
 
 These are the solutions for the [HTML5 tutorial](http://en.oreilly.com/rails2011/public/schedule/detail/18321) I am teaching at RailsConf 2011.
 
-The class is broken up into one main exercise, a simple multiplayer game, and a few other standalone exercises.
-
 # SETUP
 
 1. Copy the directory named `start` from this project to a new location on your machine. This will form the basis for the game we are building
@@ -20,7 +18,7 @@ You will have a hard time completing this tutorial without a working console.
 
 That message was created by the file `js/tutorial.js`. I'll be using that file for all of our application code.
 
-# MAIN EXERCISE ONE 
+# EXERCISE ONE 
 ## Feature Detection
 
 1. Examine `js/libs/modernizr`. This is the [Modernizr](http://www.modernizr.com/) library that performs browser feature detection and helps style new HTML5 semantic elements. Because you can't yet
@@ -47,7 +45,7 @@ Then add the class `no-js` to the `<HTML>` tag on the second line of the index.h
 Using only CSS and HTML, use the `<HTML>` classes `touch` and `no-touch` to reveal a message to the user indicating whether or not they have a touch interface. If you have a mobile OS simulator installed (such as iOS Simulator) you can
 test both messages.
 
-# MAIN EXERCISE TWO 
+# EXERCISE TWO 
 ## Basic Canvas Drawing
 
 1. Add `<canvas id="main" width="400" height="400"></canvas>` to the body of your index.html file, just after the closing of the `<header>` tag.
@@ -78,3 +76,29 @@ All drawing operations happen on the canvas context, not the canvas itself. Righ
 
 Try filling your rectangle with a gradient. You'll need to create a gradient object as explained in [Dive Into HTML5](http://diveintohtml5.org/canvas.html#gradients), then set your fillStyle to that gradient.
 
+# EXERCISE THREE
+## Canvas Image Manipulation
+
+1. Copy the file `media/water.jpg` from the tutorial project to your directory. (This image is [Creative Commons-licensed](http://www.flickr.com/photos/50183640@N05/5616041841/))
+
+2. Draw this image using the canvas by adding these lines to your `tutorial.js` file:
+
+    var img = new Image();
+    img.src = "media/water.jpg";
+    img.onload = function() {
+      context.drawImage(img,0,110);
+    };
+
+3. Reload your browser to see the image.
+
+4. Now try using one of the more complex drawImage API calls.  Modify the drawImage call to accept two additional parameters, a width and height for the new image, after the original 3 parameters.
+
+5. Reload the browser and observe the image scaled to a different size.
+
+## Extra Credit
+
+Use the full-blown most complicate drawImage call to slice a portion of the original image and project it onto the canvas. The arguments are:
+
+    drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,destinationX,destinationY,destinationWidth,destinationHeight)
+
+Check out the file `media/drawImage.png` for a visual explanation.
