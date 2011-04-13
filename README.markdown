@@ -1,3 +1,5 @@
+# HTML5: Beyond the Buzzwords
+
 These are the solutions for the HTML5 tutorial I am teaching at RailsConf 2011:
 
 http://en.oreilly.com/rails2011/public/schedule/detail/18321
@@ -7,4 +9,7 @@ The class is broken up into one main exercise, a simple multiplayer game, and a 
 I use tags to indicate the different solutions to the sub-exercises of the main exercise. The master branch
 of this repository contains the final solution. Check out earlier tags to see the solution at earlier stages.
 
-MAIN EXERCISE STEP ONE: FEATURE DETECTION
+# MAIN EXERCISE ONE: Feature Detection
+
+    some example code
+    more code code
