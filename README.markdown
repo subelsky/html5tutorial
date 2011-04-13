@@ -116,3 +116,71 @@ Each sprite is 32 pixels wide and 32 pixels high.  So if you want to slice out t
 
 Choose dx, dy, dw, and dh to your taste, then reload the browser. Consult the solution in `ex3` if you get confused.
 
+# EXERCISE FOUR
+## Basic Animation
+
+1. Copy `js/libs/jquery-1.5.2.js` to the `js/libs` directory in your project. We'll be using jQuery to bind keyboard events and to perform other tasks.
+
+2. Add a `<script>` tag to the bottom of your index.html file, before the `tutorial.js` file is loaded, to load the jQuery library:
+
+    <script src="js/libs/jquery-1.5.2.js"></script>
+
+3. Comment out most of the drawing code we had been working with so the page starts clean.  The only working code in your `tutorial.js` should look like this:
+
+    var canvas = document.getElementById("main");
+    var context = canvas.getContext("2d");
+
+    var characters = new Image();
+    characters.src = "media/characters.gif";
+
+4. Initialize two variables, `x` and `y`, to zero. We'll use these to keep track of the user's current position.
+
+5. Initialize variables to store the height and width of the canvas. Later we'll be changing the size of the canvas dynamically so it makes sense to not hard code these values.
+
+     var height = $(canvas).height();
+     var width = $(canvas).width();
+
+5. Setup another onload function for the characters object. When the characters image has loaded, we want to bind keyboard events to a function we'll write next:
+
+    $(window).keyup(move);
+
+6. Write a move function that updates the character position on screen based on which arrow key was pressed.  Using the binding from step 5, your move function should 
+accept one argument passed by jQuery: an event object. That object has a "which" property containing the code for the key that was pressed.
+
+The key codes are:
+
+* Up = 38
+* Down = 40
+* Left = 37
+* Right = 39
+
+Just increment or decrement x or y, depending on which key was pressed. Be sure to guard against x or y going out of bounds (less than zero or greater than the canvas size).
+
+If you get confused check out `ex4/js/tutorial.js` for an example move function.
+
+7. At the end of your move function, call context.drawImage to slice out one of the sprites from our file and project it on the screen at the coordinates stored
+in x and y.
+
+If you get confused check out `ex4/js/tutorial.js` to see what this looks like.
+
+8. Reload your browser and try it out. You should see your character tracking across the screen slowly.
+
+9. Let's make this look nicer by clearing the screen before each draw command.  Add this before your drawImage call:
+
+    context.clearRect(0,0,width,height);
+
+10. You may also want to increase the number of pixels that the character travels per key press.
+
+## Extra Credit
+
+Try setting up an animation loop that redraws the screen a few times per second. This will let you decouple the keyboard events from the drawing. You'll need something like this
+to start your loop:
+
+    setInterval(runLoopFunction,interval);
+
+Where runLoopFunction is the name of your function and interval is the number of milliseconds the browser should wait in between calls to that function.
+
+# EXERCISE FIVE
+## Fun With Forms
+
+
