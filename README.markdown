@@ -79,7 +79,7 @@ Try filling your rectangle with a gradient. You'll need to create a gradient obj
 # EXERCISE THREE
 ## Canvas Image Manipulation
 
-1. Copy the file `media/water.jpg` from the tutorial project to your directory. (This image is [Creative Commons-licensed](http://www.flickr.com/photos/50183640@N05/5616041841/))
+1. Copy the file `media/water.jpg` from the tutorial project to your project's `media` directory. (This image is [Creative Commons-licensed](http://www.flickr.com/photos/50183640@N05/5616041841/))
 
 2. Draw this image using the canvas by adding these lines to your `tutorial.js` file:
 
@@ -91,14 +91,28 @@ Try filling your rectangle with a gradient. You'll need to create a gradient obj
 
 3. Reload your browser to see the image.
 
-4. Now try using one of the more complex drawImage API calls.  Modify the drawImage call to accept two additional parameters, a width and height for the new image, after the original 3 parameters.
+4. Now add two additional parameters, a destination width and height, after the original 3 parameters:
+
+      context.drawImage(img,0,110,200,100);
 
 5. Reload the browser and observe the image scaled to a different size.
 
-## Extra Credit
+6. Copy the sprite file we'll be using for our simple game, `media/characters.jpg` to the `media` folder of your project. (I got this CC-licensed file by David E. Gervais from the [TomeTik](http://pousse.rapiere.free.fr/tome/) project)
 
-Use the full-blown most complicate drawImage call to slice a portion of the original image and project it onto the canvas. The arguments are:
+7. Use the 9 argument version of drawImage to slice out one character from the characters file and project it onto the canvas:
 
-    drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,destinationX,destinationY,destinationWidth,destinationHeight)
+    drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh);
 
-Check out the file `media/drawImage.png` for a visual explanation.
+   The 9 arguments are explained in this image:
+
+   ![drawImage arguments](http://images.whatwg.org/drawImage.png)
+
+Each sprite is 32 pixels wide and 32 pixels high.  So if you want to slice out the 2nd character in the top row, with the red hood, you would start with these parameters:
+
+* sx = 33
+* sy = 0
+* sw = 32
+* sh = 32
+
+Choose dx, dy, dw, and dh to your taste, then reload the browser. Consult the solution in `ex3` if you get confused.
+
