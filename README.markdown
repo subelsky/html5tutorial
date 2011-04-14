@@ -297,7 +297,7 @@ with a hash, where the keys are user names and the values are coordinates).  Mod
 other users. We're not doing anything to ensure uniqueness of usernames, so make sure you pick a name that won't collide with anyone else's name.
 
 # EXERCISE 9
-## Embedded Audio (and Data Attributes)
+## Embedded Media (and Data Attributes)
 
 Let's add some sound effects to our game and take advantage of HTML5's data attributes to simplify our controls.
 
@@ -351,6 +351,8 @@ I chose to embed these directly on the page so we could take advantage of the br
 6. Modify your anchor click event handler to automatically play the requested sound using the above technique.
 
 7. To see what basic HTML5 audio controls look like, remove `display:hidden` from the `<div>` and add the `controls` attribute next to `preload`, then reload the page.
+
+*The HTML5 audio tag works exactly like the audio tag, but the codec issues are worse. See* [Dive Into HTML5](http://diveintohtml5.org/video.html) *for full details.*
 
 ## Extra Credit
 
