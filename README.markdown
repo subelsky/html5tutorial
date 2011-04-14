@@ -185,7 +185,7 @@ Where runLoopFunction is the name of your function and interval is the number of
 
 1. When we link this game up with other players we want to know who's who. So let's add a username field that takes advantage of new HTML5 form features. Add this line to your `index.html` file:
 
-    <input name="username" placeholder="Your name">
+    <input id="username" placeholder="Your name">
    
 2. Reload the page. If you don't see any placerholder text, check the value of `Modernizr.input.placeholder` in your JavaScript console.
 
@@ -204,4 +204,8 @@ To get the value of the slider, use `$('#size').val()`
 ## Extra Credit
 
 Try out some of the other input elements listed in the [Dive Into HTML5 book](http://diveintohtml5.org/forms.html), like the color picker!
+
+# EXERCISE SIX
+## Local Storage
+
 
