@@ -363,6 +363,14 @@ For a cool example of how to embed video, and use the canvas to manipulate image
 
 1. At the JavaScript console, type the following command:
 
-    navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc) })
+    navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc.coords) })
 
-2. Inspect the location object in the console.
+2. Inspect the location object in the console. If you lookup those coordinates in Google Maps you should get a result fairly close to the convention center! It's very easy to integrate this info
+with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. [This link](http://code.google.com/apis/maps/documentation/javascript/examples/map-geolocation.html)
+has a simple demo of that feature - be sure to view source on it
+
+## Extra Credit
+
+Check out [SimpleGeo](https://simplegeo.com/docs/tutorials/javascript) for some examples of other cool things you can do when you know a user's approximate location.
+
+
