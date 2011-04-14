@@ -154,7 +154,7 @@ The key codes are:
 * Left = 37
 * Right = 39
 
-Just increment or decrement x or y, depending on which key was pressed. Be sure to guard against x or y going out of bounds (less than zero or greater than the canvas size).
+Just increment or decrement x or y by 10, depending on which key was pressed. Be sure to guard against x or y going out of bounds (less than zero or greater than the canvas size).
 
 If you get confused check out `ex4/js/tutorial.js` for an example move function.
 
@@ -257,7 +257,7 @@ If your browser supports localStorage, you should get the value of `shaz` back.
 
 3. Instead of initialize your player's x and white coordinates to zero, set them to random values within the bounds of your canvas, using something like:
 
-    Math.round(Math.random(800) * 1000)
+    Math.round(Math.random(width) * 1000)
 
 That will help us avoid bunching up in the same spots. **Be sure to round these numbers**. At least in Chrome, floating point values used for canvas drawing can cause a big performance hit.
 
@@ -266,13 +266,32 @@ That will help us avoid bunching up in the same spots. **Be sure to round these 
 
 1. Let's connect to a websocket server in order to exchange information with other players.  Add this code to your `tutorial.js` file:
 
-    var ws = new WebSocket("ws://localhost:8080");
+    var ws = new WebSocket("ws://########:80");
     ws.onmessage = handleMessage;
 
     function handleMessage(event) {
       console.info(event.data);
     }
 
-2. Reload your browser. Every 10 seconds you should see a "ping' message from the server.  This is a JSON string which we'll need to unmarshal before we can work with it.
+2. Reload your browser. Every 10 seconds you should see a "ping" message from the server.  Note that this is a JSON string that we'll need to unmarshal before we can work with it.
 
-3.
+3. Check out the Ruby code in `server/server.rb` to see what you're connecting to with that string.
+
+4. Modify the `handleMessage` function to parse the JSON string. If your browser does not have a native JSON implementation, you'll need to add the script `js/libs/json2.js` to your project for this code to work.
+
+    var msg = JSON.parse(event.data);
+    console.info(msg);
+
+5. Reload your browser, wait 10 seconds, then check your console. You should see the de-marshalled JSON object displayed.
+
+6. Modify your `move` function to send a JavaScript object out on the websocket every time you move your character. Use the websocket.send method like this:
+
+    ws.send(JSON.stringify({ name: name, x: x, y: y, type: "move" }));
+
+7. Check out the server log being tailed on the screen. You should see your movement messages showing up every time you push a key.
+
+## Extra Credit
+
+The server is broadcasting all movement events to the whole class. To display other student positions on your screen, you'll need to keep track of their usernames and x and y positions (probably
+with a hash, where the keys are user names and the values are coordinates).  Modify your handleMessage message to display multiple players, displaying a different image for your own sprite vs.
+other users. We're not doing anything to ensure uniqueness of usernames, so make sure you pick a name that won't collide with anyone else's name.

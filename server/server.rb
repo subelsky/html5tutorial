@@ -28,6 +28,7 @@ class TutorialServer
         end
 
         socket.onmessage do |msg|
+          @logger.info "received: #{msg}"
           broadcast(msg)
         end
 

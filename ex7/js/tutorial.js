@@ -11,23 +11,23 @@ characters.onload = function() {
 var height = $(canvas).height();
 var width = $(canvas).width();
 
-var x = Math.round(Math.random(800) * 1000);
-var y = Math.round(Math.random(800) * 1000);
+var x = Math.round(Math.random(height) * 1000);
+var y = Math.round(Math.random(width) * 1000);
 draw();
 
 function move(event) {
   switch (event.which) {
     case 38:
-      if (y > 0) { y -= 1; }
+      if (y > 0) { y -= 5; }
       break;
     case 40:
-      if (y < height) { y += 1; }
+      if (y < height) { y += 10; }
       break;
     case 37:
-      if (x > 0) { x -= 1; }
+      if (x > 0) { x -= 10; }
       break;
     case 39:
-      if (x < width) { x += 1; }
+      if (x < width) { x += 10; }
       break;
     default:
       break;
