@@ -259,9 +259,20 @@ If your browser supports localStorage, you should get the value of `shaz` back.
 
     Math.round(Math.random(800) * 1000)
 
-**Be sure to round these numbers**. At least in Chrome, floating point values used for canvas drawing can cause a big performance hit.
+That will help us avoid bunching up in the same spots. **Be sure to round these numbers**. At least in Chrome, floating point values used for canvas drawing can cause a big performance hit.
 
 # EXERCISE 8
 ## Web Sockets
 
-1. Let's connect to a websocket server in order to exchange information
+1. Let's connect to a websocket server in order to exchange information with other players.  Add this code to your `tutorial.js` file:
+
+    var ws = new WebSocket("ws://localhost:8080");
+    ws.onmessage = handleMessage;
+
+    function handleMessage(event) {
+      console.info(event.data);
+    }
+
+2. Reload your browser. Every 10 seconds you should see a "ping' message from the server.  This is a JSON string which we'll need to unmarshal before we can work with it.
+
+3.
