@@ -358,4 +358,11 @@ I chose to embed these directly on the page so we could take advantage of the br
 
 For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out [this HTML5 demo](http://html5demos.com/video-canvas).
 
+# EXERCISE TEN
+## Geolocation
 
+1. At the JavaScript console, type the following command:
+
+    navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc) })
+
+2. Inspect the location object in the console.
