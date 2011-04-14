@@ -208,4 +208,34 @@ Try out some of the other input elements listed in the [Dive Into HTML5 book](ht
 # EXERCISE SIX
 ## Local Storage
 
+1. At your JavaScript console, set a localStorage value:
 
+    localStorage.setItem('shaz','bot')
+
+2. Close the page completely, then reopen it in a new window and type this at your JavaScript console:
+
+    localStorage.getItem('shaz')
+
+If your browser supports localStorage, you should get the value of `shaz` back.
+
+3. Try the above steps with the sessionStorage object. How does sessionStorage differ from localStorage?  What about when you merely reload a page?  Do they perform in the same way?
+
+4. Call localStorage.clear() and try getting the 'shaz' item again.
+
+5. Bind a new function to the change event of the username input field we added in exercise 5, like this:
+
+    $('#username').change(function() { ... });
+
+6. In that bound function, use localStorage to record the user's name. You may need to change the focus by clicking elsewhere on the page to get this event to fire.  To fetch the value of the username field, use `$("#username").val()`.
+
+7. Add a line of code to `tutorial.js` to fetch the user's name from localStorage. If that value is not null, set the value of the username to the pre-stored field like this: `$("#username").val(nameStr)`.
+
+8. Reload the page. Type in a username, tab away from the username field (to make sure the change event fires), then reload the page. Your username should already be filled-in, instead of the placerholder text.
+
+9. Try setting and getting numbers and hashes in localStorage. Does localStorage preserve type?
+
+## Extra Credit
+
+1. Bind the window object's `storage` event to keep track of when new items are added to localStorage. See [Dive Into HTML5](http://diveintohtml5.org/storage.html#storage-event) if you get stuck.
+
+2. What happens when you try to get an item that has not been previously set from localStorage?
