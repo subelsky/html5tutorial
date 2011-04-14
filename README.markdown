@@ -255,7 +255,13 @@ If your browser supports localStorage, you should get the value of `shaz` back.
 
 2. Also in `index.html`, increase the width and height of your canvas to the maximum comfortable size for your display.
 
+3. Instead of initialize your player's x and white coordinates to zero, set them to random values within the bounds of your canvas, using something like:
+
+    Math.round(Math.random(800) * 1000)
+
+**Be sure to round these numbers**. At least in Chrome, floating point values used for canvas drawing can cause a big performance hit.
+
 # EXERCISE 8
 ## Web Sockets
 
-
+1. Let's connect to a websocket server in order to exchange information

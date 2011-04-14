@@ -8,12 +8,12 @@ characters.onload = function() {
   $(window).keyup(move);
 };
 
-var x, y;
-x = y = 0;
-var sizeAmt = 32;
-
 var height = $(canvas).height();
 var width = $(canvas).width();
+
+var x = Math.round(Math.random(800) * 1000);
+var y = Math.round(Math.random(800) * 1000);
+draw();
 
 function move(event) {
   switch (event.which) {
