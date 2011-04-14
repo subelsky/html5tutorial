@@ -295,3 +295,65 @@ That will help us avoid bunching up in the same spots. **Be sure to round these 
 The server is broadcasting all movement events to the whole class. To display other student positions on your screen, you'll need to keep track of their usernames and x and y positions (probably
 with a hash, where the keys are user names and the values are coordinates).  Modify your handleMessage message to display multiple players, displaying a different image for your own sprite vs.
 other users. We're not doing anything to ensure uniqueness of usernames, so make sure you pick a name that won't collide with anyone else's name.
+
+# EXERCISE 9
+## Embedded Audio (and Data Attributes)
+
+Let's add some sound effects to our game and take advantage of HTML5's data attributes to simplify our controls.
+
+1. Add this list element to your `index.html` body:
+
+    <ul>
+      <li><a href="#" data-soundname='bubble'>Play Bubble</a></li>
+      <li><a href="#" data-soundname='ray_gun'>Play Ray Gun</a></li>
+    </ul>
+
+2. Use jQuery to bind the `<a>` tag's `click` event. You can figure out which soundname the user wants by inspect the click event's `target.dataset.soundname` data attribute property, like so:
+
+    $('a').click(function(evt) {
+      console.info(evt.target.dataset.soundname);
+    });
+
+*Note that data attributes are different from micro-data, because they are not intended for external consumption.  See* [Dive Into HTML5](http://diveintohtml5.org/extensibility.html) *for more details about microdata.*
+
+3. Reload the page. Click each link to verify that you can read the `dataset` property and are getting the correct soundname.
+
+4. Playing audio and video in HTML5 involves a lot of codec hassles. You generally have to provide your content in multiple formats. To make things simple, I've included these two 
+sound files in four different formats. Copy the sound files from the `media` directory to your project. *You may have to fiddle with your dev machine's MIME settings. HTML5 will choke if
+your audio files aren't served with the proper MIME type. See* [MIME Types](http://diveintohtml5.org/video.html#video-mime-types) *for details.*
+
+The following audio embed should work for most people, though. The spec says that the browser should pick the first listed source that it can play.
+
+    <div style="display:hidden">
+      <audio id="bubble" preload>
+        <source src="media/bubble.ogg">
+        <source src="media/bubble.mp3">
+        <source src="media/bubble.wav">
+      </audio>
+
+      <audio id="ray_gun" preload>
+        <source src="media/ray_gun.ogg">
+        <source src="media/ray_gun.mp3">
+        <source src="media/ray_gun.wav">
+      </audio>
+    </div>
+
+I chose to embed these directly on the page so we could take advantage of the browser's content fallback selection. You can also create audio objects just like we did with Image objects earlier:
+
+    var audio = new Audio;
+    audio.src = "http://...";
+
+5. Reload your page, then try playing both sounds at the console:
+
+    $('#bubble')[0].play()
+    $('#ray_gun')[0].play()
+
+6. Modify your anchor click event handler to automatically play the requested sound using the above technique.
+
+7. To see what basic HTML5 audio controls look like, remove `display:hidden` from the `<div>` and add the `controls` attribute next to `preload`, then reload the page.
+
+## Extra Credit
+
+For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out [this HTML5 demo](http://html5demos.com/video-canvas).
+
+
