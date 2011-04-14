@@ -239,3 +239,23 @@ If your browser supports localStorage, you should get the value of `shaz` back.
 1. Bind the window object's `storage` event to keep track of when new items are added to localStorage. See [Dive Into HTML5](http://diveintohtml5.org/storage.html#storage-event) if you get stuck.
 
 2. What happens when you try to get an item that has not been previously set from localStorage?
+
+# EXERCISE 7
+## Canvas Cleanup
+
+1. Let's make things a little nicer before we add multi-player features to this "game". First, let's set a dark background for our canvas. Add this declaration to the `<head>` section of `index.html`:
+
+    <style>
+      canvas { 
+        background-color: black;
+      }
+
+      input { display: block; }
+    </style>
+
+2. Also in `index.html`, increase the width and height of your canvas to the maximum comfortable size for your display.
+
+# EXERCISE 8
+## Web Sockets
+
+
