@@ -395,4 +395,28 @@ has a simple demo of that feature - be sure to view source on the page.
 
 Check out [SimpleGeo](https://simplegeo.com/docs/tutorials/javascript) for some examples of other cool things you can do when you know a user's approximate location.
 
+# EXERCISE ELEVEN
+## Web Workers
+
+1. Examine the file `js/worker.js` and then copy it to your project. This is a simple brute-force algorithm to find all the factors of a given integer.
+
+2. Reload the page, then type these lines at your JavaScript console:
+
+    var worker = new Worker('js/worker.js');
+
+    worker.addEventListener('message', function(e) {
+      console.info(e.data);
+    },false);
+
+    worker.postMessage(100);
+
+**If you are using Chrome**, you will get a security exception if you are loading index.html as a file:// URI. You can reopen Chrome with a command-line flag to circumvent the exception, though.
+This is what worked for me on OS X:
+
+    open -n -a 'Google Chrome.app' --args --allow-file-access-from-files
+
+Or just use a different browser.
+
+3. You should see the worker immediately post a response to the console. Try increasing the size of the number you pass to worker.postMessage until you get something that takes awhile to run. Notice
+that your web page continues to be responsive even as this task runs in the background.
 
