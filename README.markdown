@@ -354,25 +354,25 @@ I chose to embed these directly on the page so we could take advantage of the br
 
 8. We also need to provide multiple versions of video files to ensure compatibility across modern browsers.  Copy the files `short.mov`, `short.mp4`, `short.ogv`, and `short.webm` from the `media` directory to your project's `media` directory.
 
-These files were created from a QuickTime movie using `ffmpeg2theora`, `ffmpeg` and `HandBrakeCLI`, using settings from [Dive Into HTML5](http://diveintohtml5.org/video.html).
+   These files were created from a QuickTime movie using `ffmpeg2theora`, `ffmpeg` and `HandBrakeCLI`, using settings from [Dive Into HTML5](http://diveintohtml5.org/video.html).
 
     ffmpeg2theora --videobitrate 200 --max_size 320x240 --output short.ogv short.mov 
     HandBrakeCLI --preset "iPhone & iPod Touch" --vb 200 --width 320 --two-pass --turbo --optimize --input short.mov --output short.mp4
     ffmpeg -pass 1 -passlogfile short.mov -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i short.mov -vcodec libvpx -b 204800 -s 320x240 -aspect 4:3 -an -f webm -y NUL
     ffmpeg -pass 2 -passlogfile short.mov -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i short.mov -vcodec libvpx -b 204800 -s 320x240 -aspect 4:3 -acodec libvorbis -ac 2 -y short.webm
 
-9. Add these this tag to the bottom of your `index.html` page:
+9. Add this to the bottom of your `index.html` page:
 
-    <video width="320" height="240" preload controls>
-      <source src="short.webm" type='video/webm; codecs="vp8, vorbis"' />
-      <source src="short.ogv" type='video/ogg; codecs="theora, vorbis"' />
-      <source src="short.mp4" />
-      <source src="short.mov" />
-    </video>
+          <video width="320" height="240" preload controls>
+            <source src="short.webm" type='video/webm; codecs="vp8, vorbis"' />
+            <source src="short.ogv" type='video/ogg; codecs="theora, vorbis"' />
+            <source src="short.mp4" />
+            <source src="short.mov" />
+          </video>
 
 10. Reload the page. One of those four formats should display in your browser.
 
-*For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out* [this HTML5 demo](http://html5demos.com/video-canvas).
+For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out [this demo](http://html5demos.com/video-canvas).
 
 ## Extra Credit
 
@@ -429,7 +429,7 @@ that your web page continues to be responsive even as this task runs in the back
 
 3. If you have a packet sniffer, start it sniffing on port 80. Otherwise, make sure your JavaScript console is recording network traffic.
 
-4. Now visit [http://files.subelsky.com/manifestdemo/index.html](http://files.subelsky.com/manifestdemo/index.html) where this example is uploaded.
+4. Now visit <http://files.subelsky.com/manifestdemo/index.html>
 
 5. In your packet sniffer or JavaScript console, note that all files are being downloaded, and note the MIME type of the `demo.manifest` file (`text/cache-manifest`).
 
@@ -475,7 +475,7 @@ Here are some other "HTML5-ish" features that you should be aware of that didn't
 
 # KEEP IN TOUCH
 
-Thanks for coming to my tutorial! I hope it was helpful. You can reach me at [mike@subelsky.com](mailto:mike@subelsky.com), or follow me on [twitter](http://twitter.com/subelsky).
+Thanks for coming to my tutorial! I hope it was helpful. You can reach me at <mike@subelsky.com> or follow me on [twitter](http://twitter.com/subelsky).
 
 # SHAMELESS PLUG
 
