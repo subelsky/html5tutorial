@@ -420,3 +420,63 @@ Or just use a different browser.
 3. You should see the worker immediately post a response to the console. Try increasing the size of the number you pass to worker.postMessage until you get something that takes awhile to run. Notice
 that your web page continues to be responsive even as this task runs in the background.
 
+# EXERCISE TWELVE
+## Offline Apps
+
+1. Examine the `index.html` file in the `manifest` directory. This is a stripped-down version of the exercise 11 solution. Check out the `<html>` tag which now includes a reference to `demo.manifest.`
+
+2. Examine `demo.manifest`.
+
+3. If you have a packet sniffer, start it sniffing on port 80. Otherwise, make sure your JavaScript console is recording network traffic.
+
+4. Now visit [http://files.subelsky.com/manifestdemo/index.html](http://files.subelsky.com/manifestdemo/index.html) where this example is uploaded.
+
+5. In your packet sniffer or JavaScript console, note that all files are being downloaded, and note the MIME type of the `demo.manifest` file (`text/cache-manifest`).
+
+6. Now reload the page. If all goes well, the only traffic you'll see moving along the wire is a request to check the demo.manifest file, which doesn't even get downloaded since it is unchanged 
+(because of the `304` HTTP response status code). *Actually you may also see a request for a favicon.ico file. If we had one, we could add it to the demo.manifest file as well and then this request would be supressed as well.*
+
+This is the same technique you can use to make an HTML5 app "installable" on a smart phone. Unfortunately when I tried this on iOS, it does not store the audio files offline, so the demo is less impressive.
+
+## Extra Credit
+
+Get `manifest/index.html` running on your dev machine. All you need to do is serve up the directory from the webserver (vs. from `file://`), and make sure the manifest file has the right MIME type. In Apache,
+I added this directive:
+
+    AddType text/cache-manifest .manifest
+
+# STUFF THAT DID NOT FIT
+
+Here are some other "HTML5-ish" features that you should be aware of that didn't fit into this tutorial or are too bleeding-edge to be used reliably:
+
+* [Microdata](http://diveintohtml5.org/extensibility.html)
+
+* [WebGL](http://www.queness.com/post/7459/8-stunning-javascript-webgl-demonstrations)
+
+* [HTML5 History API](http://html5demos.com/history/)
+
+* [Alternatives to websockets](http://html5doctor.com/methods-of-communication/)
+
+* [Polyfills to get HTML5 features working across browsers](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills) and also [Uber](http://html5doctor.com/how-to-get-all-the-browsers-playing-ball/)
+
+# USEFUL URLs
+
+* [Dive Into HTML5](http://diveintohtml5.org/)
+
+* [HTML5 Doctor](http://html5doctor.com/)
+
+* [HTML5 Demos](http://html5demos.com/)
+
+* [HTML5 Rocks](http://www.html5rocks.com/)
+
+* [Mozilla Canvas Tutorials](https://developer.mozilla.org/en/Canvas_tutorial)
+
+* [WHATWG Living Standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/)
+
+# KEEP IN TOUCH
+
+Thanks for coming to my tutorial! I hope it was helpful. You can reach me at [mike@subelsky.com](mailto:mike@subelsky.com), or follow me on [twitter](http://twitter.com/subelsky).
+
+# SHAMELESS PLUG
+
+I'm building a game for programmers using much of the technology discussed here. If you'd like to signup for the beta, I'd love to get your feedback. Visit [###](http://example.com) to signup for the beta.
