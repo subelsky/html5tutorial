@@ -352,11 +352,32 @@ I chose to embed these directly on the page so we could take advantage of the br
 
 7. To see what basic HTML5 audio controls look like, remove `display:hidden` from the `<div>` and add the `controls` attribute next to `preload`, then reload the page.
 
-*The HTML5 audio tag works exactly like the audio tag, but the codec issues are worse. See* [Dive Into HTML5](http://diveintohtml5.org/video.html) *for full details.*
+8. We also need to provide multiple versions of video files to ensure compatibility across modern browsers.  Copy the files `short.mov`, `short.mp4`, `short.ogv`, and `short.webm` from the `media` directory to your project's `media` directory.
+
+These files were created from a QuickTime movie using `ffmpeg2theora`, `ffmpeg` and `HandBrakeCLI`, using settings from [Dive Into HTML5](http://diveintohtml5.org/video.html).
+
+    ffmpeg2theora --videobitrate 200 --max_size 320x240 --output short.ogv short.mov 
+    HandBrakeCLI --preset "iPhone & iPod Touch" --vb 200 --width 320 --two-pass --turbo --optimize --input short.mov --output short.mp4
+    ffmpeg -pass 1 -passlogfile short.mov -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i short.mov -vcodec libvpx -b 204800 -s 320x240 -aspect 4:3 -an -f webm -y NUL
+    ffmpeg -pass 2 -passlogfile short.mov -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i short.mov -vcodec libvpx -b 204800 -s 320x240 -aspect 4:3 -acodec libvorbis -ac 2 -y short.webm
+
+9. Add these this tag to the bottom of your `index.html` page:
+
+    <video width="320" height="240" preload controls>
+      <source src="short.webm" type='video/webm; codecs="vp8, vorbis"' />
+      <source src="short.ogv" type='video/ogg; codecs="theora, vorbis"' />
+      <source src="short.mp4" />
+      <source src="short.mov" />
+    </video>
+
+10. Reload the page. One of those four formats should display in your browser.
+
+*For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out* [this HTML5 demo](http://html5demos.com/video-canvas).
 
 ## Extra Credit
 
-For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out [this HTML5 demo](http://html5demos.com/video-canvas).
+Use the [FlowPlayer](http://flowplayer.org/) Flash-based video player as the ultimate fallback for this content (you'll need to embed a `<object>` tag after the four `<source>` tags. The technique is explained
+at [Video for Everybody](http://camendesign.com/code/video_for_everybody).
 
 # EXERCISE TEN
 ## Geolocation
@@ -366,8 +387,9 @@ For a cool example of how to embed video, and use the canvas to manipulate image
     navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc.coords) })
 
 2. Inspect the location object in the console. If you lookup those coordinates in Google Maps you should get a result fairly close to the convention center! It's very easy to integrate this info
-with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. [This link](http://code.google.com/apis/maps/documentation/javascript/examples/map-geolocation.html)
-has a simple demo of that feature - be sure to view source on it
+with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. 
+[This link](http://code.google.com/apis/maps/documentation/javascript/examples/map-geolocation.html)
+has a simple demo of that feature - be sure to view source on the page.
 
 ## Extra Credit
 

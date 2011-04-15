@@ -33,18 +33,25 @@
   <script src="js/libs/jquery-1.5.2.js"></script>
   <script src="js/tutorial.js"></script>
 
-  <div style="display:hidden">
-    <audio id="bubble" preload>
+  <div>
+    <audio id="bubble" preload controls>
       <source src="media/bubble.ogg">
       <source src="media/bubble.mp3">
       <source src="media/bubble.wav">
     </audio>
-
-    <audio id="ray_gun" preload>
+    <audio id="ray_gun" preload controls>
       <source src="media/ray_gun.ogg">
       <source src="media/ray_gun.mp3">
       <source src="media/ray_gun.wav">
     </audio>
   </div>
+
+  <video width="320" height="240" preload controls>
+    <source src="short.webm" type='video/webm; codecs="vp8, vorbis"' />
+    <source src="short.ogv" type='video/ogg; codecs="theora, vorbis"' />
+    <source src="short.mp4" />
+    <source src="short.mov" />
+  </video>
+  
 </body>
 </html>
