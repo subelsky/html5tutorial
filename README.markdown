@@ -321,10 +321,15 @@ Let's add some sound effects to our game and take advantage of HTML5's data attr
           <li><a href="#" data-soundname='ray_gun'>Play Ray Gun</a></li>
         </ul>
 
-2. Use jQuery to bind the `<a>` tag's `click` event. You can figure out which soundname the user wants by inspect the click event's `target.dataset.soundname` data attribute property, like so:
+2. Use jQuery to bind the `<a>` tag's `click` event. You can figure out which soundname the user wants by inspect the click event's data attribute, as below. I've
+included the cross-browser version as well as the version provided for in the [HTML5 spec](http://dev.w3.org/html5/spec/elements.html#embedding-custom-non-visible-data), which only Chrome seems to support.
 
         $('a').click(function(evt) {
-          console.info(evt.target.dataset.soundname);
+          // this spec version is not as pretty but works across browsers
+          $('#'+evt.target.getAttribute('data-soundname'))[0].play();
+
+          // the HTML5 spec provides a nicer API, but this version only seems to work in Chrome
+          // $('#'+evt.target.dataset.soundname)[0].play();
         });
 
     *Note that data attributes are different from micro-data, because they are not intended for external consumption.  See* [Dive Into HTML5](http://diveintohtml5.org/extensibility.html) *for more details about microdata.*

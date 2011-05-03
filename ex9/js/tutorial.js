@@ -1,3 +1,7 @@
+$('a').click(function(evt) {
+  $('#'+evt.target.getAttribute('data-soundname'))[0].play();
+});
+
 var canvas = document.getElementById("main");
 var context = canvas.getContext("2d");
 
@@ -62,7 +66,3 @@ nameEl.change(function() {
 if (name !== "null") {
   nameEl.val(name);
 }
-
-$('a').click(function(evt) {
-  $('#'+evt.target.dataset.soundname)[0].play();
-});
