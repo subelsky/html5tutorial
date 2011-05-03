@@ -399,12 +399,15 @@ at [Video for Everybody](http://camendesign.com/code/video_for_everybody).
 
 1. At the JavaScript console, type the following command:
 
-    <pre>navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc.coords) })</pre>
+    <pre>navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc.coords) }, function(err) { console.error(err) })</pre>
 
 2. Inspect the location object in the console. If you lookup those coordinates in Google Maps you should get a result fairly close to the convention center! It's very easy to integrate this info
 with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. 
 [This link](http://code.google.com/apis/maps/documentation/javascript/examples/map-geolocation.html)
 has a simple demo - be sure to view source on the page.
+
+*The first callback gets fired if the browser can guess its location. The second callback fires if it can't. For me, the second callback fired in
+Safari when I ran it on a machine with an Ethernet connection.*
 
 ## Extra Credit
 
@@ -449,7 +452,7 @@ that your web page continues to be responsive even as this task runs in the back
 5. In your packet sniffer or JavaScript console, note that all files are being downloaded, and note the MIME type of the `demo.manifest` file (`text/cache-manifest`).
 
 6. Now reload the page. If all goes well, the only traffic you'll see moving along the wire is a request to check the demo.manifest file, which doesn't even get downloaded since it is unchanged 
-(because of the `304` HTTP response status code). *Actually you may also see a request for a favicon.ico file. If we had one, we could add it to the demo.manifest file as well and then this request would be supressed as well.*
+(because of the `304` HTTP response status code).
 
     This is the same technique you can use to make an HTML5 app "installable" on a smart phone. Unfortunately when I tried this on iOS the audio files do not get stored offline, so the demo is less impressive.
 
