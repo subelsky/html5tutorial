@@ -369,18 +369,15 @@ your audio files aren't served with the proper MIME type. See* [MIME Types](http
 
     These files were created from a QuickTime movie using `ffmpeg2theora`, `ffmpeg` and `HandBrakeCLI`, using settings from [Dive Into HTML5](http://diveintohtml5.org/video.html).
 
-        ffmpeg2theora --videobitrate 200 --max_size 320x240 --output short.ogv short.mov 
+        ffmpeg2theora --videobitrate 200 --max_size 320x240 --output short.ogg short.mov 
         HandBrakeCLI --preset "iPhone & iPod Touch" --vb 200 --width 320 --two-pass --turbo --optimize --input short.mov --output short.mp4
-        ffmpeg -pass 1 -passlogfile short.mov -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i short.mov -vcodec libvpx -b 204800 -s 320x240 -aspect 4:3 -an -f webm -y NUL
-        ffmpeg -pass 2 -passlogfile short.mov -threads 16  -keyint_min 0 -g 250 -skip_threshold 0 -qmin 1 -qmax 51 -i short.mov -vcodec libvpx -b 204800 -s 320x240 -aspect 4:3 -acodec libvorbis -ac 2 -y short.webm
 
 9. Add this to the bottom of your `index.html` page:
 
           <video width="320" height="240" preload controls>
-            <source src="short.webm" type='video/webm; codecs="vp8, vorbis"' />
-            <source src="short.ogv" type='video/ogg; codecs="theora, vorbis"' />
-            <source src="short.mp4" />
-            <source src="short.mov" />
+            <source src="media/short.ogg" type='video/ogg; codecs="theora, vorbis"' />
+            <source src="media/short.mp4" />
+            <source src="media/short.mov" />
           </video>
 
 10. Reload the page. One of those four formats should display in your browser.
@@ -389,7 +386,7 @@ your audio files aren't served with the proper MIME type. See* [MIME Types](http
 
 ## Extra Credit
 
-Use the [FlowPlayer](http://flowplayer.org/) Flash-based video player as the ultimate fallback for this content (you'll need to embed a `<object>` tag after the four `<source>` tags. The technique is explained
+Use the [FlowPlayer](http://flowplayer.org/) Flash-based video player as the ultimate fallback for this content (you'll need to embed a `<object>` tag after the `<source>` tags. The technique is explained
 at [Video for Everybody](http://camendesign.com/code/video_for_everybody).
 
 # EXERCISE TEN
