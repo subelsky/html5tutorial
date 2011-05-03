@@ -199,6 +199,8 @@ Where runLoopFunction is the name of your function and interval is the number of
 
     `<input id="size" type="range" min="4" max="320" step="8" value="32">`
 
+       *This element does not render in Firefox. Try it out in Safari or Chrome.*
+
 5. Bind changes to that slider to a function in `tutorial.js` that will control the destination width and height of your drawImage call. The binding should look like this:
 
     `$('#size').change(function() { ... });`
@@ -211,6 +213,9 @@ Try out some of the other input elements listed in the [Dive Into HTML5 book](ht
 
 # EXERCISE SIX
 ## Local Storage
+
+*Note: this exercise will not work well in Firefox because of a bug in the way Firefox handles file:// URLs.* If you want this to work in Firefox you'll need to serve up your code from a web server
+on your development machine. [Details](https://bugzilla.mozilla.org/show_bug.cgi?id=507361)
 
 1. At your JavaScript console, set a localStorage value:
 
@@ -274,6 +279,8 @@ to the pre-stored field like this: `$("#username").val(nameStr)`.
 
 # EXERCISE 8
 ## Web Sockets
+
+*WebSockets are disabled in Firefox. You may be able to get something working by using* [socket.io](http://socket.io/).
 
 1. Let's connect to a websocket server in order to exchange information with other players.  Add this code to your `tutorial.js` file:
 
