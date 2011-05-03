@@ -11,8 +11,8 @@ characters.onload = function() {
 var height = $(canvas).height();
 var width = $(canvas).width();
 
-var x = Math.round(Math.random(height) * 1000);
-var y = Math.round(Math.random(width) * 1000);
+var x = 0;
+var y = 0;
 
 draw();
 

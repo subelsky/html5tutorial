@@ -4,7 +4,8 @@ These are the solutions for the [HTML5 tutorial](http://en.oreilly.com/rails2011
 
 # PREREQUISITES
 
-- These instructions were built using the latest version of Chrome, but will also work with the latest version of Safari or Firefox. I have not tested them with IE or Opera but much of the code should still work.
+- These instructions were built using the latest version of Chrome, but will also work with the latest version of Safari or Firefox. Some of the exercises do not work perfectly in Firefox due to limitations in the browser. 
+I have not tested them with IE or Opera but much of the code should still work.
 
 - Your browser should have a built-in JavaScript console. If you are using Firefox, be sure to install [Firebug](http://getfirebug.com).
 
@@ -263,19 +264,9 @@ to the pre-stored field like this: `$("#username").val(nameStr)`.
           input { display: block; }
         </style>
 
-2. Also in `index.html`, increase the width and height of your canvas to the maximum comfortable size for your display. You could do something like:
+2. You may also want to increase the width and height of your canvas element.
 
-        var height = $(window).height();
-        var width = $(window).width();
-        
-        $(canvas).height(height);
-        $(canvas).width(width);
-
-3. Instead of initializing your player's x and white coordinates to zero, set them to random values within the bounds of your canvas, using something like:
-
-    <pre>Math.round(Math.random(width) * 100)</pre>
-
-    That will help us avoid bunching up in the same spots. **Be sure to round these numbers**. At least in Chrome, floating point values used for canvas drawing can cause a big performance hit.
+3. Increase the step size for your character so it moves 5 or 10 pixels at a time.
 
 # EXERCISE 8
 ## Web Sockets
