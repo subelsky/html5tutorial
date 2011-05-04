@@ -387,7 +387,8 @@ your audio files aren't served with the proper MIME type. See* [MIME Types](http
 
 10. Reload the page. One of those four formats should display in your browser.
 
-    For a cool example of how to embed video, and use the canvas to manipulate images from that video, check out [this demo](http://html5demos.com/video-canvas).
+    For a cool example of how to use the canvas to manipulate images from a video, check out [this demo](http://html5demos.com/video-canvas). There's also a good demonstration of using embedded media events to show a timer
+    in [this demo](http://html5demos.com/video).
 
 ## Extra Credit
 
