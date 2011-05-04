@@ -4,8 +4,13 @@ var context = canvas.getContext("2d");
 var characters = new Image();
 characters.src = "media/characters.gif";
 
+var ws = new WebSocket("ws://localhost:8080");
+
 characters.onload = function() {
   $(window).keyup(move);
+  draw();
+
+  ws.onmessage = handleMessage;
 };
 
 var height = $(canvas).height();
@@ -13,11 +18,6 @@ var width = $(canvas).width();
 
 var x = 0;
 var y = 0;
-
-draw();
-
-var ws = new WebSocket("ws://localhost:8080");
-ws.onmessage = handleMessage;
 
 function handleMessage(event) {
   var msg = JSON.parse(event.data);

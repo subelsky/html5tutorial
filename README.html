@@ -61,11 +61,10 @@ test both messages.</p>
 
 <ol>
 <li><p>Add <code>&lt;canvas id=&quot;main&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;</code> to the beggining of the <code>&lt;body&gt;</code> tag of your index.html file.</p></li>
-<li><p>To draw a rectangle in the canvas, add this code to js/tutorial.js:</p>
-
-<pre>var canvas = document.getElementById("main");
-var context = canvas.getContext("2d");
-context.fillRect(0,0,20,20);</pre>
+<li><p>To draw a rectangle in the canvas, add this code to js/tutorial.js:
+<pre>var canvas = document.getElementById(&quot;main&quot;);
+var context = canvas.getContext(&quot;2d&quot;);
+context.fillRect(0,0,20,20);</pre></p>
 
 <p>All drawing operations happen on the canvas context, not the canvas itself. Right now &quot;2d&quot; is the only available context, but a future HTML spec may define a 3d context.</p></li>
 <li><p>Open <code>index.html</code> in your browser. You should see a black rectangle!</p></li>
@@ -235,6 +234,8 @@ to the pre-stored field like this: <code>$(&quot;#username&quot;).val(nameStr)</
 <li><p>Try setting and getting numbers and hashes in localStorage. Does localStorage preserve type?</p></li>
 </ol>
 
+<p><em>Your JavaScript console may also have an inspector for local and session storage. In WebKit's inspector, it's Storage tab.</em></p>
+
 <h2>Extra Credit</h2>
 
 <ol>
@@ -395,8 +396,7 @@ at <a href="http://camendesign.com/code/video_for_everybody">Video for Everybody
 <pre>navigator.geolocation.getCurrentPosition(function(loc) { console.info(loc.coords) }, function(err) { console.error(err) })</pre></li>
 <li><p>Inspect the location object in the console. If you lookup those coordinates in Google Maps you should get a result fairly close to the convention center! It's very easy to integrate this info
 with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. 
-<a href="http://code.google.com/apis/maps/documentation/javascript/examples/map-geolocation.html">This link</a>
-has a simple demo - be sure to view source on the page.</p></li>
+<a href="http://html5demos.com/geo">This link</a> has a simple demo - be sure to view source on the page.</p></li>
 </ol>
 
 <p><em>The first callback gets fired if the browser can guess its location. The second callback fires if it can't. For me, the second callback fired in
@@ -431,6 +431,8 @@ This is what worked for me on OS X:</p>
 <li><p>You should see the worker immediately post a response to the console. Try increasing the size of the number you pass to worker.postMessage until you get something that takes awhile to run (like 1,000,000). Notice
 that your web page continues to be responsive even as this task runs in the background.</p></li>
 </ol>
+
+<p>Here's a <a href="http://nerget.com/rayjs-mt/rayjs.html">more complicated webworker example</a>.</p>
 
 <h1>EXERCISE TWELVE</h1>
 

@@ -245,6 +245,8 @@ to the pre-stored field like this: `$("#username").val(nameStr)`.
 
 9. Try setting and getting numbers and hashes in localStorage. Does localStorage preserve type?
 
+*Your JavaScript console may also have an inspector for local and session storage. In WebKit's inspector, it's Storage tab.*
+
 ## Extra Credit
 
 1. Bind the window object's `storage` event to keep track of when new items are added to localStorage. See [Dive Into HTML5](http://diveintohtml5.org/storage.html#storage-event) if you get stuck.
@@ -404,8 +406,7 @@ at [Video for Everybody](http://camendesign.com/code/video_for_everybody).
 
 2. Inspect the location object in the console. If you lookup those coordinates in Google Maps you should get a result fairly close to the convention center! It's very easy to integrate this info
 with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. 
-[This link](http://code.google.com/apis/maps/documentation/javascript/examples/map-geolocation.html)
-has a simple demo - be sure to view source on the page.
+[This link](http://html5demos.com/geo) has a simple demo - be sure to view source on the page.
 
 *The first callback gets fired if the browser can guess its location. The second callback fires if it can't. For me, the second callback fired in
 Safari when I ran it on a machine with an Ethernet connection.*
@@ -438,6 +439,8 @@ Check out [SimpleGeo](https://simplegeo.com/docs/tutorials/javascript) for some 
 
 3. You should see the worker immediately post a response to the console. Try increasing the size of the number you pass to worker.postMessage until you get something that takes awhile to run (like 1,000,000). Notice
 that your web page continues to be responsive even as this task runs in the background.
+
+Here's a [more complicated webworker example](http://nerget.com/rayjs-mt/rayjs.html).
 
 # EXERCISE TWELVE
 ## Offline Apps
