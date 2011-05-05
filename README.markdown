@@ -1,13 +1,19 @@
 # HTML5: Beyond the Buzzwords
 
-These are the solutions for the [HTML5 tutorial](http://en.oreilly.com/rails2011/public/schedule/detail/18321) I am teaching at RailsConf 2011.
+# GOALS
+
+I am aiming to expand your imagination about the kinds of features that can be added to modern web applications without adding any dependencies
+or friction to your codebase. I want to provide you with just enough knowledge that you could start to take advantage of these
+capabilities in your own apps.
 
 # PREREQUISITES
 
 - These instructions were built using the latest version of Chrome, but will also work with the latest version of Safari or Firefox. Some of the exercises do not work perfectly in Firefox due to limitations in the browser. 
 I have not tested them with IE or Opera but much of the code should still work.
 
-- Your browser should have a built-in JavaScript console. If you are using Firefox, be sure to install [Firebug](http://getfirebug.com).
+- Your browser should have a built-in JavaScript console. Chrome and Safari have a built-in JavaScript console. If you are using Firefox, be sure to install [Firebug](http://getfirebug.com).
+
+- You need some kind of basic text editor (Vi, Emacs, Textmate, Notepad, etc.) to make changes to the project files.
 
 # SETUP
 
@@ -20,7 +26,7 @@ is a good way to learn some state of the art HTML5 practices.
     Note the doctype that starts this file. That's all you need to do to indicate to the browser that you want to use the latest, greatest version of HTML. 
     The boilerplate also shows the use of new HTML5 semantic tags `<header>` and `<footer>`. You can use these instead of less semantic code such as `<div id="header"></div>`.
 
-3. Open up the index.html file in your browser. Then activate your JavaScript console. You should see the message "You have a working console". If you don't see this message you should install Firebug or switch to a different browser.
+3. Open up the index.html file in your browser. Then activate your JavaScript console (in Chrome, go to the View menu, choose Developer, then choose JavaScript console; in Safari, hit option-Apple-C). You should see the message "You have a working console". If you don't see this message you should install Firebug or switch to a different browser.
 You will have a hard time completing this tutorial without a working console.
 
     That message was created by the file `js/tutorial.js`. I'll be using that file for all of our application code.
@@ -31,7 +37,7 @@ You will have a hard time completing this tutorial without a working console.
 1. Examine `js/libs/modernizr`. This is the [Modernizr](http://www.modernizr.com/) library that performs browser feature detection and helps style new HTML5 semantic elements. Because you can't yet
 rely on users having fully-capable browsers, feature detection is essential for providing useful error messages and fallbacks.
 
-2. To activate Modernizr, add this line to the `<HEAD>` tag of index.html.
+2. To activate Modernizr, use your favorite text editor to add this line to the `<HEAD>` tag of `index.html`.
 
     `<script src="js/libs/modernizr-1.7.js"></script>`
 
@@ -47,6 +53,8 @@ rely on users having fully-capable browsers, feature detection is essential for 
     * Modernizr.geolocation
     * Modernizr.localstorage
 
+    If you don't see "true" for all of these you should go ahead and install the [Chrome](http://www.google.com/chrome) browser.
+
 ## Extra Credit
 
 Using only CSS and HTML, use the `<HTML>` classes `touch` and `no-touch` to reveal a message to the user indicating whether or not they have a touch interface. If you have a mobile OS simulator installed (such as iOS Simulator) you can
@@ -55,7 +63,7 @@ test both messages.
 # EXERCISE TWO 
 ## Basic Canvas Drawing
 
-1. Add `<canvas id="main" width="400" height="400"></canvas>` to the beggining of the `<body>` tag of your index.html file.
+1. Add `<canvas id="main" width="400" height="400"></canvas>` just after the opening of the `<body>` tag in your `index.html` file.
 
 2. To draw a rectangle in the canvas, add this code to js/tutorial.js:
     <pre>var canvas = document.getElementById("main");
@@ -196,17 +204,17 @@ Where runLoopFunction is the name of your function and interval is the number of
 
 3. Now add the `autofocus` attribute to that input field and reload. If your browser supports it, the field will automatically receive the focus. 
 
-4. Let's try out a new form element, a slider we can use to control the size of our character. Add this to your `index.html` file:
+4. Let's try out a new form element, a slider we can use to control the size of our character. Add this to your `index.html` file (1):
 
     `<input id="size" type="range" min="4" max="320" step="8" value="32">`
-
-       *This element does not render in Firefox. Try it out in Safari or Chrome.*
 
 5. Bind changes to that slider to a function in `tutorial.js` that will control the destination width and height of your drawImage call. The binding should look like this:
 
     `$('#size').change(function() { ... });`
 
     To get the value of the slider, use `$('#size').val()`
+
+(1) This element does not render in Firefox. Try it out in Safari or Chrome.
 
 ## Extra Credit
 
@@ -215,7 +223,7 @@ Try out some of the other input elements listed in the [Dive Into HTML5 book](ht
 # EXERCISE SIX
 ## Local Storage
 
-*Note: this exercise will not work well in Firefox because of a bug in the way Firefox handles file:// URLs.* If you want this to work in Firefox you'll need to serve up your code from a web server
+**Note**: this exercise will not work well in Firefox because of a bug in the way Firefox handles file:// URLs. If you want this to work in Firefox you'll need to serve up your code from a web server
 on your development machine. [Details](https://bugzilla.mozilla.org/show_bug.cgi?id=507361)
 
 1. At your JavaScript console, set a localStorage value:
@@ -273,7 +281,7 @@ to the pre-stored field like this: `$("#username").val(nameStr)`.
 # EXERCISE 8
 ## Web Sockets
 
-*WebSockets are disabled in Firefox. You may be able to get something working by using* [socket.io](http://socket.io/).
+**Note**: WebSockets are disabled in Firefox. You may be able to get something working by using [socket.io](http://socket.io/).
 
 1. Let's connect to a websocket server in order to exchange information with other players.  Add this code to your `tutorial.js` file:
 
@@ -301,7 +309,7 @@ to the pre-stored field like this: `$("#username").val(nameStr)`.
 
 7. Check out the server log being tailed on the screen. You should see your movement messages showing up every time you push a key.
 
-*If you are thinking of building an app with websockets, definitely check out* [Pusher](http://pusherapp.com/) *which may save you the trouble of writing your own server.*
+If you are thinking of building an app with websockets, definitely check out* [Pusher](http://pusherapp.com/) which may save you the trouble of writing your own server.
 
 ## Extra Credit
 
@@ -334,13 +342,13 @@ included the cross-browser version as well as the version provided for in the [H
           // $('#'+evt.target.dataset.soundname)[0].play();
         });
 
-    *Note that data attributes are different from micro-data, because they are not intended for external consumption.  See* [Dive Into HTML5](http://diveintohtml5.org/extensibility.html) *for more details about microdata.*
+    Note that data attributes are different from micro-data, because they are not intended for external consumption.  See* [Dive Into HTML5](http://diveintohtml5.org/extensibility.html) for more details about microdata.
 
 3. Reload the page. Click each link to verify that you can read the `dataset` property and are getting the correct soundname.
 
 4. Playing audio and video in HTML5 involves a lot of codec hassles. You usually have to provide your content in multiple formats. To make things simple, I've included these two 
-sound files in four different formats. Copy the sound files from the `media` directory to your project. *You may have to fiddle with your dev machine's MIME settings.* HTML5 will choke if
-your audio files aren't served with the proper MIME type. See* [MIME Types](http://diveintohtml5.org/video.html#video-mime-types) for details.
+sound files in four different formats. Copy the sound files from the `media` directory to your project. You may have to fiddle with your dev machine's MIME settings because HTML5 will choke if
+your audio files aren't served with the proper MIME type. See [MIME Types](http://diveintohtml5.org/video.html#video-mime-types) for details.
 
     The following audio embed should work for most people, though. The spec says that the browser should pick the first listed source that it can play.
 
@@ -408,8 +416,8 @@ at [Video for Everybody](http://camendesign.com/code/video_for_everybody).
 with Google Maps to show a map at the user's location, but unfortunately this can't be done from localhost due to Google Maps API authentication issues. 
 [This link](http://html5demos.com/geo) has a simple demo - be sure to view source on the page.
 
-*The first callback gets fired if the browser can guess its location. The second callback fires if it can't. For me, the second callback fired in
-Safari when I ran it on a machine with an Ethernet connection.*
+    The first callback gets fired if the browser can guess its location. The second callback fires if it can't. For me, the second callback fired in
+    Safari when I ran it on a machine with an Ethernet connection.
 
 ## Extra Credit
 
@@ -467,7 +475,7 @@ I added this directive to `httpd.conf`:
 
     AddType text/cache-manifest .manifest
 
-# STUFF THAT DID NOT FIT
+# THAT WAS TOO EASY?
 
 Here are some other "HTML5-ish" features that you should be aware of that didn't fit into this tutorial or are too bleeding-edge to be used reliably:
 
@@ -497,10 +505,16 @@ Here are some other "HTML5-ish" features that you should be aware of that didn't
 
 * [WHATWG Living Standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/)
 
+# ACKNOWLEDGEMENTS
+
+Thanks to [Jeff Casimir](http://jumpstartlab.com/) for helping me organize this material, and to [Mark Pilgrim](http://diveintomark.org/) for writing Dive Into HTML5 which was a big help. Any mistakes are my own of course!
+
 # KEEP IN TOUCH
 
-Thanks for coming to my tutorial! I hope it was helpful. You can reach me at <mike@subelsky.com> or follow me on [twitter](http://twitter.com/subelsky).
+Thanks for coming to my tutorial.  I'm <mike@subelsky.com> or [@subelsky](http://twitter.com/subelsky)
+on Twitter.  I love talking about HTML5, so email me if you have
+questions or want to discuss interesting challenges.
 
-# SHAMELESS PLUG
-
-I'm building a game for programmers using much of the technology discussed here. If you'd like to signup for the beta, I'd love to get your feedback. Visit [###](http://example.com) to signup for the beta.
+Most of the techniques I discuss in this tutorial I learned building
+an HTML5-powered game for programmers named EXP.  We're accepting beta
+testers now, visit [exp.subelsky.com](http://exp.subelsky.com/) to signup!
