@@ -277,7 +277,8 @@ to the pre-stored field like this: <code>$(&quot;#username&quot;).val(nameStr)</
 <p><strong>Note</strong>: WebSockets are disabled in Firefox. You may be able to get something working by using <a href="http://socket.io/">socket.io</a>.</p>
 
 <ol>
-<li><p>Let's connect to a websocket server in order to exchange information with other players.  Add this code to your <code>tutorial.js</code> file:</p>
+<li><p>Let's connect to a websocket server in order to exchange information with other players.  Add the following code to your <code>tutorial.js</code> file. I noticed that I would sometimes get errors
+if this code fired before the <code>characters.gif</code> image file loaded, so you may want to stick this in the onload handler for that object. See the exercise 8 solution if this is confusing.</p>
 
 <pre>var ws = new WebSocket("ws://########:80");
 ws.onmessage = handleMessage;
