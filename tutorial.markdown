@@ -157,7 +157,7 @@ Try filling your rectangle with a gradient. You'll need to create a gradient obj
 
     <pre>$(window).keyup(move);</pre>
 
-6. Write a move function that updates the character position on screen based on which arrow key was pressed.  Using the binding from step 5, your move function should 
+6. Write a move function that updates the character position on screen based on which arrow key was pressed.  Using the binding from the above step, your move function should 
 accept one argument passed by jQuery: an event object. That object has a "which" property containing the code for the key that was pressed.
 
     The key codes are:
@@ -310,7 +310,7 @@ if this code fired before the `characters.gif` image file loaded, so you may wan
 
 7. Check out the server log being tailed on the screen. You should see your movement messages showing up every time you push a key.
 
-If you are thinking of building an app with websockets, definitely check out* [Pusher](http://pusherapp.com/) which may save you the trouble of writing your own server.
+If you are thinking of building an app with websockets, definitely check out [Pusher](http://pusherapp.com/) which may save you the trouble of writing your own server.
 
 ## Extra Credit
 
@@ -332,7 +332,7 @@ Let's add some sound effects to our game and take advantage of HTML5's data attr
           <li><a href="#" data-soundname='ray_gun'>Play Ray Gun</a></li>
         </ul>
 
-2. Use jQuery to bind the `<a>` tag's `click` event. You can figure out which soundname the user wants by inspect the click event's data attribute, as below. I've
+2. Use jQuery to bind the `<a>` tag's `click` event. You can figure out which soundname the user wants by inspecting the click event's data attribute, as below. I've
 included the cross-browser version as well as the version provided for in the [HTML5 spec](http://dev.w3.org/html5/spec/elements.html#embedding-custom-non-visible-data), which only Chrome seems to support.
 
         $('a').click(function(evt) {
@@ -343,13 +343,13 @@ included the cross-browser version as well as the version provided for in the [H
           // $('#'+evt.target.dataset.soundname)[0].play();
         });
 
-    Note that data attributes are different from micro-data, because they are not intended for external consumption.  See* [Dive Into HTML5](http://diveintohtml5.org/extensibility.html) for more details about microdata.
+    Note that data attributes are different from micro-data, because they are not intended for external consumption.  See [Dive Into HTML5](http://diveintohtml5.org/extensibility.html) for more details about microdata.
 
 3. Reload the page. Click each link to verify that you can read the `dataset` property and are getting the correct soundname.
 
 4. Playing audio and video in HTML5 involves a lot of codec hassles. You usually have to provide your content in multiple formats. To make things simple, I've included these two 
-sound files in four different formats. Copy the sound files from the `media` directory to your project. You may have to fiddle with your dev machine's MIME settings because HTML5 will choke if
-your audio files aren't served with the proper MIME type. See [MIME Types](http://diveintohtml5.org/video.html#video-mime-types) for details.
+sound files in four different formats. Copy the sound files from the `media` directory to your project. If you are serving these files through a web server (and not viewing them via a file:// URL), you may have 
+to fiddle with your MIME settings because HTML5 will choke if your audio files aren't served with the proper MIME type. See [MIME Types](http://diveintohtml5.org/video.html#video-mime-types) for details.
 
     The following audio embed should work for most people, though. The spec says that the browser should pick the first listed source that it can play.
 
@@ -384,9 +384,6 @@ your audio files aren't served with the proper MIME type. See [MIME Types](http:
 8. Video embedding works the same way. We need to provide multiple versions of video files to ensure compatibility across modern browsers.  Copy the files `short.mov`, `short.mp4`, `short.ogv`, and `short.webm` from the `media` directory to your project's `media` directory.
 
     These files were created from a QuickTime movie using `ffmpeg2theora`, `ffmpeg` and `HandBrakeCLI`, using settings from [Dive Into HTML5](http://diveintohtml5.org/video.html).
-
-        ffmpeg2theora --videobitrate 200 --max_size 320x240 --output short.ogg short.mov 
-        HandBrakeCLI --preset "iPhone & iPod Touch" --vb 200 --width 320 --two-pass --turbo --optimize --input short.mov --output short.mp4
 
 9. Add this to the bottom of your `index.html` page:
 
@@ -467,7 +464,7 @@ Here's a [more complicated webworker example](http://nerget.com/rayjs-mt/rayjs.h
 6. Now reload the page. If all goes well, the only traffic you'll see moving along the wire is a request to check the demo.manifest file, which doesn't even get downloaded since it is unchanged 
 (because of the `304` HTTP response status code).
 
-    This is the same technique you can use to make an HTML5 app "installable" on a smart phone. Unfortunately when I tried this on iOS the audio files do not get stored offline, so the demo is less impressive.
+    This is the same technique you can use to make an HTML5 app "installable" on a smart phone.
 
 ## Extra Credit
 

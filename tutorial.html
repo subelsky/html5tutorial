@@ -68,11 +68,10 @@ test both messages.</p>
 
 <ol>
 <li><p>Add <code>&lt;canvas id=&quot;main&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;</code> just after the opening of the <code>&lt;body&gt;</code> tag in your <code>index.html</code> file.</p></li>
-<li><p>To draw a rectangle in the canvas, add this code to js/tutorial.js:</p>
-
-<pre>var canvas = document.getElementById("main");
-var context = canvas.getContext("2d");
-context.fillRect(0,0,20,20);</pre>
+<li><p>To draw a rectangle in the canvas, add this code to js/tutorial.js:
+<pre>var canvas = document.getElementById(&quot;main&quot;);
+var context = canvas.getContext(&quot;2d&quot;);
+context.fillRect(0,0,20,20);</pre></p>
 
 <p>All drawing operations happen on the canvas context, not the canvas itself. Right now &quot;2d&quot; is the only available context, but a future HTML spec may define a 3d context.</p></li>
 <li><p>Open <code>index.html</code> in your browser. You should see a black rectangle!</p></li>
@@ -115,7 +114,8 @@ img.onload = function() {
 <pre>drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh);</pre>
 
 <p>The 9 arguments are explained in this image:
-<img src="http://images.whatwg.org/drawImage.png" alt="drawImage arguments" /></p>
+<img src="http://images.whatwg.org/drawImage.png" alt="drawImage arguments">
+</p>
 
 <p>Each sprite is 32 pixels wide and 32 pixels high.  So if you want to slice out the 2nd character in the top row, with the red hood, you would start with these parameters:</p>
 
@@ -153,7 +153,7 @@ characters.src = "media/characters.gif";</pre></li>
 <li><p>Setup another onload function for the characters object. When the characters image has loaded, we want to bind keyboard events to a function we'll write next:</p>
 
 <pre>$(window).keyup(move);</pre></li>
-<li><p>Write a move function that updates the character position on screen based on which arrow key was pressed.  Using the binding from step 5, your move function should 
+<li><p>Write a move function that updates the character position on screen based on which arrow key was pressed.  Using the binding from the above step, your move function should 
 accept one argument passed by jQuery: an event object. That object has a &quot;which&quot; property containing the code for the key that was pressed.</p>
 
 <p>The key codes are:</p>
@@ -280,7 +280,7 @@ to the pre-stored field like this: <code>$(&quot;#username&quot;).val(nameStr)</
 <li><p>Let's connect to a websocket server in order to exchange information with other players.  Add the following code to your <code>tutorial.js</code> file. I noticed that I would sometimes get errors
 if this code fired before the <code>characters.gif</code> image file loaded, so you may want to stick this in the onload handler for that object. See the exercise 8 solution if this is confusing.</p>
 
-<pre>var ws = new WebSocket("ws://########:80");
+<pre>var ws = new WebSocket("ws://exp.subelsky.com:8011");
 ws.onmessage = handleMessage;
 
 function handleMessage(event) {
@@ -299,7 +299,7 @@ console.info(msg);</pre></li>
 <li><p>Check out the server log being tailed on the screen. You should see your movement messages showing up every time you push a key.</p></li>
 </ol>
 
-<p>If you are thinking of building an app with websockets, definitely check out* <a href="http://pusherapp.com/">Pusher</a> which may save you the trouble of writing your own server.</p>
+<p>If you are thinking of building an app with websockets, definitely check out <a href="http://pusherapp.com/">Pusher</a> which may save you the trouble of writing your own server.</p>
 
 <h2>Extra Credit</h2>
 
@@ -323,7 +323,7 @@ other users. </p>
   &lt;li&gt;&lt;a href=&quot;#&quot; data-soundname='ray_gun'&gt;Play Ray Gun&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre></li>
-<li><p>Use jQuery to bind the <code>&lt;a&gt;</code> tag's <code>click</code> event. You can figure out which soundname the user wants by inspect the click event's data attribute, as below. I've
+<li><p>Use jQuery to bind the <code>&lt;a&gt;</code> tag's <code>click</code> event. You can figure out which soundname the user wants by inspecting the click event's data attribute, as below. I've
 included the cross-browser version as well as the version provided for in the <a href="http://dev.w3.org/html5/spec/elements.html#embedding-custom-non-visible-data">HTML5 spec</a>, which only Chrome seems to support.</p>
 
 <pre><code>$('a').click(function(evt) {
@@ -335,11 +335,11 @@ included the cross-browser version as well as the version provided for in the <a
 });
 </code></pre>
 
-<p>Note that data attributes are different from micro-data, because they are not intended for external consumption.  See* <a href="http://diveintohtml5.org/extensibility.html">Dive Into HTML5</a> for more details about microdata.</p></li>
+<p>Note that data attributes are different from micro-data, because they are not intended for external consumption.  See <a href="http://diveintohtml5.org/extensibility.html">Dive Into HTML5</a> for more details about microdata.</p></li>
 <li><p>Reload the page. Click each link to verify that you can read the <code>dataset</code> property and are getting the correct soundname.</p></li>
 <li><p>Playing audio and video in HTML5 involves a lot of codec hassles. You usually have to provide your content in multiple formats. To make things simple, I've included these two 
-sound files in four different formats. Copy the sound files from the <code>media</code> directory to your project. You may have to fiddle with your dev machine's MIME settings because HTML5 will choke if
-your audio files aren't served with the proper MIME type. See <a href="http://diveintohtml5.org/video.html#video-mime-types">MIME Types</a> for details.</p>
+sound files in four different formats. Copy the sound files from the <code>media</code> directory to your project. If you are serving these files through a web server (and not viewing them via a file:// URL), you may have 
+to fiddle with your MIME settings because HTML5 will choke if your audio files aren't served with the proper MIME type. See <a href="http://diveintohtml5.org/video.html#video-mime-types">MIME Types</a> for details.</p>
 
 <p>The following audio embed should work for most people, though. The spec says that the browser should pick the first listed source that it can play.</p>
 
@@ -371,11 +371,7 @@ $('#ray_gun')[0].play()</pre></li>
 <li><p>To see what basic HTML5 audio controls look like, remove <code>display:hidden</code> from the <code>&lt;div&gt;</code> and add the <code>controls</code> attribute next to <code>preload</code>, then reload the page.</p></li>
 <li><p>Video embedding works the same way. We need to provide multiple versions of video files to ensure compatibility across modern browsers.  Copy the files <code>short.mov</code>, <code>short.mp4</code>, <code>short.ogv</code>, and <code>short.webm</code> from the <code>media</code> directory to your project's <code>media</code> directory.</p>
 
-<p>These files were created from a QuickTime movie using <code>ffmpeg2theora</code>, <code>ffmpeg</code> and <code>HandBrakeCLI</code>, using settings from <a href="http://diveintohtml5.org/video.html">Dive Into HTML5</a>.</p>
-
-<pre><code>ffmpeg2theora --videobitrate 200 --max_size 320x240 --output short.ogg short.mov 
-HandBrakeCLI --preset &quot;iPhone &amp; iPod Touch&quot; --vb 200 --width 320 --two-pass --turbo --optimize --input short.mov --output short.mp4
-</code></pre></li>
+<p>These files were created from a QuickTime movie using <code>ffmpeg2theora</code>, <code>ffmpeg</code> and <code>HandBrakeCLI</code>, using settings from <a href="http://diveintohtml5.org/video.html">Dive Into HTML5</a>.</p></li>
 <li><p>Add this to the bottom of your <code>index.html</code> page:</p>
 
 <pre><code>  &lt;video width=&quot;320&quot; height=&quot;240&quot; preload controls&gt;
@@ -456,7 +452,7 @@ that your web page continues to be responsive even as this task runs in the back
 <li><p>Now reload the page. If all goes well, the only traffic you'll see moving along the wire is a request to check the demo.manifest file, which doesn't even get downloaded since it is unchanged 
 (because of the <code>304</code> HTTP response status code).</p>
 
-<p>This is the same technique you can use to make an HTML5 app &quot;installable&quot; on a smart phone. Unfortunately when I tried this on iOS the audio files do not get stored offline, so the demo is less impressive.</p></li>
+<p>This is the same technique you can use to make an HTML5 app &quot;installable&quot; on a smart phone.</p></li>
 </ol>
 
 <h2>Extra Credit</h2>
