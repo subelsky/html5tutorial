@@ -286,7 +286,7 @@ to the pre-stored field like this: `$("#username").val(nameStr)`.
 1. Let's connect to a websocket server in order to exchange information with other players.  Add the following code to your `tutorial.js` file. I noticed that I would sometimes get errors
 if this code fired before the `characters.gif` image file loaded, so you may want to stick this in the onload handler for that object. See the exercise 8 solution if this is confusing.
 
-    <pre>var ws = new WebSocket("ws://########:80");
+    <pre>var ws = new WebSocket("ws://exp.subelsky.com:8011");
     ws.onmessage = handleMessage;
 
     function handleMessage(event) {

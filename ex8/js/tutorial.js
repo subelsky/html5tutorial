@@ -4,7 +4,19 @@ var context = canvas.getContext("2d");
 var characters = new Image();
 characters.src = "media/characters.gif";
 
-var ws = new WebSocket("ws://localhost:8080");
+var ws = new WebSocket("ws://exp.subelsky.com:8011");
+
+ws.onopen = function() {
+  console.info("socket opened");
+};
+
+ws.onclose = function() {
+  console.info("socket closed");
+};
+
+ws.onerror = function(a,b) {
+  console.error(a,b);
+};
 
 characters.onload = function() {
   $(window).keyup(move);

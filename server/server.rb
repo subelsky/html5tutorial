@@ -58,5 +58,5 @@ end
 puts $0
 
 if File.basename(__FILE__) == $0
-  TutorialServer.new('localhost',8080).run
+  TutorialServer.new('0.0.0.0',8011).run
 end
